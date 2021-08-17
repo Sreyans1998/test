@@ -1,0 +1,160 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="style.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML_JS</title>
+</head>
+<body>
+    <nav>
+        <h1>
+            Excercies
+        </h1>
+        <ul>
+            <li>
+                <a href="#" onclick="Add(false)">
+                    Deparment
+                </a>
+            </li>
+            <li>
+                <a href="#" onclick="Add(true)">
+                    Employment
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="content">
+        <table id="EmpTable" class="empTable">
+            <thead>
+                <tr>
+                    <th>
+                        EmpID
+                    </th>
+                    <th>
+                        Emp Name
+                    </th>
+                    <th>
+                        Emp Age
+                    </th>
+                    <th>
+                        Emp Designation
+                    </th>
+                    <th>
+                        Employ Dep
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+        <table id="DepTable" class="depTable">
+            <thead>
+                <tr>
+                    <th>
+                        Department ID
+                    </th>
+                    <th>
+                        Depatment Name
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="switch">
+        <a href="#" id="add"> Add Items</a>
+    </div>
+    <div class="popUpEmp">
+        <div class="popup-content">
+            <form autocomplete="off" onsubmit="event.preventDefault();addEmp();">
+                <div class="inputs">
+                    <div class="labels">
+                        <label>Name</label>
+                    </div>
+                    <input type="text" name="empName" id="empName">
+                </div>
+                <div class="inputs">
+                    <div class="labels">
+                        <label>Age</label>
+                    </div>
+                    <input type="text" name="empAge" id="empAge">
+                </div>
+                <div class="inputs">
+                    <div class="labels">
+                        <label>Designation</label>
+                    </div>
+                    <input type="text" name="empDesignation" id="empDesignation">
+                </div>
+                <div class="inputs">
+                    <div class="labels">
+                        <label>Department</label>
+                    </div>
+                    <input type="text" name="empDepartment" id="empDepartment">
+                </div>
+                <input type="submit" value="Add">
+                <a href="#" id="cancel">cancel</a>
+            </form>
+        </div>
+    </div>
+    <div class="popUpDep">
+        <div class="popup-content">
+            <form autocomplete="off" onsubmit="event.preventDefault();addDep();">
+                <div class="inputs">
+                    <div class="labels">
+                        <label>Department ID</label>
+                    </div>
+                    <input type="text" name="depID" id="depID">
+                </div>
+                <div class="inputs">
+                    <div class="labels">
+                        <label>Department</label>
+                    </div>
+                    <input type="text" name="depName" id="depName">
+                </div>
+                <input type="submit" value="Add">
+                <a href="#" id="cancelDep">Cancel</a>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        function Add(value){
+            document.querySelector(".content").style.height = "inherit";
+            if(value){
+                document.querySelector(".depTable").style.display = "none";
+                document.querySelector(".empTable").style.display = "flex";
+                document.getElementById("add").addEventListener("click", function(){
+                    document.querySelector(".popUpEmp").style.display = "flex";
+                })
+                document.getElementById("cancel").addEventListener("click", function(){
+                    document.querySelector(".popUpEmp").style.display = "none";
+                })
+
+                console.log(value);
+            }
+            else{
+                document.querySelector(".empTable").style.display = "none";
+                document.querySelector(".depTable").style.display = "flex";
+                document.getElementById("add").addEventListener("click", function(){
+                    document.querySelector(".popUpDep").style.display = "flex";
+                })
+                document.getElementById("cancelDep").addEventListener("click", function(){
+                    document.querySelector(".popUpDep").style.display = "none";
+                })
+                console.log(value);
+            }
+        }
+    </script>
+    <script src="Emp.js"></scripts>
+</body>
+</html>
